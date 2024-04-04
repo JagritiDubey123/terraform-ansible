@@ -1,9 +1,6 @@
 # modules/vm/variables.tf
 
-# variable "name" {
-#   description = "The name of the VM instance."
-#   type        = string
-# }
+
 variable "vm_count" {
   description = "The number of VM instances to create."
   type        = number
