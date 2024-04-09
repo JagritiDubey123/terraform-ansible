@@ -1,5 +1,8 @@
 # modules/vm/variables.tf
 
+variable "startup_script_path" {
+  description = "Path to the startup script"
+}
 
 variable "vm_count" {
   description = "The number of VM instances to create."
