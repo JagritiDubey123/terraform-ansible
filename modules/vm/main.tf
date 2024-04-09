@@ -2,9 +2,11 @@
 
 resource "google_compute_instance" "vm_instance" {
   count         = var.vm_count
-    name = "instance-${count.index + 1}"
+    name = "terra-ansible-${count.index + 1}"
   machine_type = var.machine_type
   zone         = var.zone
+  # boot_disk = var.boot_disk
+  # Add other configuration attributes as needed
   boot_disk {
     initialize_params {
       image = var.boot_disk
@@ -15,8 +17,8 @@ resource "google_compute_instance" "vm_instance" {
     subnetwork = var.subnet_name
     access_config {}
   }
+   metadata_startup_script = file(var.startup_script_path)
 }
 output "vm_count" {
   value = var.vm_count
 }
-
