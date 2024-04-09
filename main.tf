@@ -13,12 +13,14 @@ module "vm_instances" {
   region        = "europe-north1"
   network_name  = "default"
   subnet_name   = "default"
+  startup_script_path = "./scripts/ansible_install.sh"
 }
 
 locals {
-  instance_names = [for i in range(module.vm_instances.vm_count) : "instance-${i + 1}"]
+  instance_names = [for i in range(module.vm_instances.vm_count) : "terra-ansible-${i + 1}"]
 }
 
 output "instance_names" {
   value = local.instance_names
 }
+
